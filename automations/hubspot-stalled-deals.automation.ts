@@ -71,8 +71,18 @@ export default automation(
 
     slack.sendMessage({
       conversation: parameters.slackConversationId,
-      text: t`Open deals with no CRM updates in 14 days (first 100 matches):\n${lines}\nReview each deal before deciding on a follow-up.`,
+      text: t`Open deals with no CRM updates in 14 days (first 100 matches):\n${lines}\nReview each deal before deciding on a follow-up.`.transform(
+        escapeSlackText,
+      ),
       unfurlLinks: false,
     })
   },
 )
+
+/** Keeps provider text from becoming Slack mentions or control markup. */
+function escapeSlackText(text: string) {
+  return text
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+}
