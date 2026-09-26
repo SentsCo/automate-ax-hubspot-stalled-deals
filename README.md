@@ -17,6 +17,8 @@ You'll choose:
 - The Slack channel where the weekly list should go.
 - Account authorization.
 
+After you connect HubSpot, the agent can help identify the portal, pipeline, and stage IDs. It will create the Automate.ax project and connect Slack when prompted.
+
 ## Manual setup
 
 If you prefer to set it up yourself:
